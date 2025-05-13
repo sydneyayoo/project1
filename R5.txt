@@ -23,3 +23,5 @@ interface e0/0
 
 end
 wr
+
+test git
