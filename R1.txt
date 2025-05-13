@@ -1,0 +1,32 @@
+en
+conf t
+hostname R1
+
+interface e0/0
+ ip address 10.1.2.1 255.255.255.0
+ no shutdown
+
+router ospf 1
+ router-id 1.1.1.1
+ network 10.1.2.1 0.0.0.0 area 0
+
+end
+wr
+
+ip cef  ---> By Def.=Enabled
+mpls ip ---> By Def.=Enabled
+
+config-if#mpls ip
+mpls label range start end
+show mpls interfaces
+
+en
+conf t
+ip cef
+mpls ip
+mpls label range 100 199
+interface e0/0
+  mpls ip
+
+end
+wr

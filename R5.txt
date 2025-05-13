@@ -1,0 +1,25 @@
+en
+conf t
+hostname R5
+
+interface e0/0
+ ip address 10.4.5.5 255.255.255.0
+ no shutdown
+
+router ospf 1
+ router-id 5.5.5.5
+ network 10.4.5.5 0.0.0.0 area 0
+
+end
+wr
+
+en
+conf t
+ip cef
+mpls ip
+mpls label range 500 599
+interface e0/0
+  mpls ip
+
+end
+wr

@@ -1,0 +1,30 @@
+en
+conf t
+hostname R3
+
+interface e0/0
+ ip address 10.2.3.3 255.255.255.0
+ no shutdown
+
+interface e0/1
+ ip address 10.3.4.3 255.255.255.0
+ no shutdown
+
+router ospf 1
+ router-id 3.3.3.3
+ network 10.2.3.3 0.0.0.0 area 0
+ network 10.3.4.3 0.0.0.0 area 0
+
+end
+wr
+
+en
+conf t
+ip cef
+mpls ip
+mpls label range 300 399
+interface range e0/0 - 1
+  mpls ip
+
+end
+wr
